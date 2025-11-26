@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Stray Kids</title> 
+    <title>Stray Kids</title> 
 
     <style>
       @font-face {
@@ -33,7 +33,7 @@
         font-size: 72px;
         font-family: "JustMeAgain", sans-serif;
         text-align: center;
-        background-image: url("Screenshot 2025-11-25 at 1.36.32 PM.png");
+        background-image: url("Screenshot 2025-11-25 at 1.36.32 PM.png");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -141,12 +141,143 @@
         border-radius: 10px;
         font-family: "Oswald", sans-serif;
         text-align: center;
-        background-image: url("Screenshot 2025-11-25 at 2.12.05 PM.png");
+        background-image: url("Screenshot 2025-11-25 at 2.12.05 PM.png");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         border: 8px solid #000;
 
+      }
+
+      /* CD Album Containers */
+      .albums-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        padding: 40px 0;
+        max-width: 960px;
+        margin: 0 auto;
+      }
+
+      .cd-container {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+      }
+
+      .cd-back {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .album-art {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+        border: 3px solid #000;
+      }
+
+      .play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60px;
+        height: 60px;
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        z-index: 10;
+      }
+
+      .play-button::after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-left: 20px solid #fff;
+        border-top: 12px solid transparent;
+        border-bottom: 12px solid transparent;
+        margin-left: 4px;
+      }
+
+      .album-item:hover .play-button {
+        opacity: 1;
+      }
+
+      .album-title {
+        text-align: center;
+        margin-top: 10px;
+        font-family: "Oswald", sans-serif;
+        font-size: 18px;
+        color: #000;
+        font-weight: bold;
+      }
+
+      .album-item {
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+
+      .album-item:hover {
+        transform: scale(1.05);
+      }
+
+      /* Modal Styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+
+      .modal-content {
+        background-color: #fff;
+        margin: 5% auto;
+        padding: 20px;
+        border: 5px solid #000;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 500px;
+        position: relative;
+      }
+
+      .close {
+        color: #a30202;
+        float: right;
+        font-size: 35px;
+        font-weight: bold;
+        cursor: pointer;
+        line-height: 20px;
+      }
+
+      .close:hover {
+        color: #000;
+      }
+
+      .modal-content iframe {
+        width: 100%;
+        height: 352px;
+        border-radius: 10px;
+        margin-top: 20px;
       }
 
       footer {
@@ -168,19 +299,173 @@
         <ul class="navli-container">
 
           <ul>
-              <li><a href="https://izzydipasta-ctrl.github.io/final-web/">HOME</a></li>
-              <li><a href=" https://izzydipasta-ctrl.github.io/Menu/">MEMBERS</a></li>
-              <li><a href="https://izzydipasta-ctrl.github.io/About/ ">SONGS</a></li>
-              <li><a href="https://izzydipasta-ctrl.github.io/Contact/">MUSIC VIDEOS</a></li>
+              <li><a href="https://izzydipasta-ctrl.github.io/final-web/">HOME</a></li>
+              <li><a href=" https://izzydipasta-ctrl.github.io/Menu/">MEMBERS</a></li>
+              <li><a href="https://izzydipasta-ctrl.github.io/About/ ">SONGS</a></li>
+              <li><a href="https://izzydipasta-ctrl.github.io/Contact/">MUSIC VIDEOS</a></li>
 
           </ul>
       </nav>
 
-      
+      <!-- Albums Section -->
+      <div class="albums-container">
+        <div class="album-item" onclick="openModal('ceremony')">
+          <div class="cd-container">
+            <img src="cd.webp" alt="CD" class="cd-back">
+            <img src="album.jpeg" alt="Ceremony" class="album-art">
+            <div class="play-button"></div>
+          </div>
+          <div class="album-title">CEREMONY</div>
+        </div>
 
+        <div class="album-item" onclick="openModal('chkchkboom')">
+          <div class="cd-container">
+            <img src="cd.webp" alt="CD" class="cd-back">
+            <img src="chkchkboom-album.jpg" alt="CHK CHK BOOM" class="album-art">
+            <div class="play-button"></div>
+          </div>
+          <div class="album-title">CHK CHK BOOM</div>
+        </div>
+
+        <div class="album-item" onclick="openModal('lalalala')">
+          <div class="cd-container">
+            <img src="cd.webp" alt="CD" class="cd-back">
+            <img src="lalalala-album.jpg" alt="LALALALA" class="album-art">
+            <div class="play-button"></div>
+          </div>
+          <div class="album-title">LALALALA</div>
+        </div>
+
+        <div class="album-item" onclick="openModal('maniac')">
+          <div class="cd-container">
+            <img src="cd.webp" alt="CD" class="cd-back">
+            <img src="maniac-album.jpg" alt="MANIAC" class="album-art">
+            <div class="play-button"></div>
+          </div>
+          <div class="album-title">MANIAC</div>
+        </div>
+
+        <div class="album-item" onclick="openModal('godsmenu')">
+          <div class="cd-container">
+            <img src="cd.webp" alt="CD" class="cd-back">
+            <img src="gods-menu-album.jpg" alt="God's Menu" class="album-art">
+            <div class="play-button"></div>
+          </div>
+          <div class="album-title">GOD'S MENU</div>
+        </div>
+
+        <div class="album-item" onclick="openModal('sclass')">
+          <div class="cd-container">
+            <img src="cd.webp" alt="CD" class="cd-back">
+            <img src="s-class-album.jpg" alt="S-CLASS" class="album-art">
+            <div class="play-button"></div>
+          </div>
+          <div class="album-title">S-CLASS</div>
+        </div>
+
+        <div class="album-item" onclick="openModal('bleep')">
+          <div class="cd-container">
+            <img src="cd.webp" alt="CD" class="cd-back">
+            <img src="bleep-album.jpg" alt="BLEEP" class="album-art">
+            <div class="play-button"></div>
+          </div>
+          <div class="album-title">BLEEP</div>
+        </div>
+
+        <div class="album-item" onclick="openModal('creed')">
+          <div class="cd-container">
+            <img src="cd.webp" alt="CD" class="cd-back">
+            <img src="creed-album.jpg" alt="CREED" class="album-art">
+            <div class="play-button"></div>
+          </div>
+          <div class="album-title">CREED</div>
+        </div>
+
+        <div class="album-item" onclick="openModal('hollow')">
+          <div class="cd-container">
+            <img src="cd.webp" alt="CD" class="cd-back">
+            <img src="hollow-album.jpg" alt="HOLLOW" class="album-art">
+            <div class="play-button"></div>
+          </div>
+          <div class="album-title">HOLLOW</div>
+        </div>
+
+        <div class="album-item" onclick="openModal('megaverse')">
+          <div class="cd-container">
+            <img src="cd.webp" alt="CD" class="cd-back">
+            <img src="megaverse-album.jpg" alt="MEGAVERSE" class="album-art">
+            <div class="play-button"></div>
+          </div>
+          <div class="album-title">MEGAVERSE</div>
+        </div>
+
+        <div class="album-item" onclick="openModal('inmyhead')">
+          <div class="cd-container">
+            <img src="cd.webp" alt="CD" class="cd-back">
+            <img src="in-my-head-album.jpg" alt="IN MY HEAD" class="album-art">
+            <div class="play-button"></div>
+          </div>
+          <div class="album-title">IN MY HEAD</div>
+        </div>
+
+        <div class="album-item" onclick="openModal('walkinonwater')">
+          <div class="cd-container">
+            <img src="cd.webp" alt="CD" class="cd-back">
+            <img src="walkin-on-water-album.jpg" alt="WALKIN ON WATER" class="album-art">
+            <div class="play-button"></div>
+          </div>
+          <div class="album-title">WALKIN ON WATER</div>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div id="spotifyModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <div id="modalContent"></div>
+        </div>
+      </div>
+
+      <script>
+        const spotifyLinks = {
+          ceremony: 'https://open.spotify.com/embed/track/62xU1NllqWBCbkZFTXEqzF?utm_source=generator',
+          chkchkboom: 'https://open.spotify.com/embed/track/YOUR_CHKCHKBOOM_TRACK_ID',
+          lalalala: 'https://open.spotify.com/embed/track/YOUR_LALALALA_TRACK_ID',
+          maniac: 'https://open.spotify.com/embed/track/YOUR_MANIAC_TRACK_ID',
+          godsmenu: 'https://open.spotify.com/embed/track/YOUR_GODSMENU_TRACK_ID',
+          sclass: 'https://open.spotify.com/embed/track/YOUR_SCLASS_TRACK_ID',
+          bleep: 'https://open.spotify.com/embed/track/YOUR_BLEEP_TRACK_ID',
+          creed: 'https://open.spotify.com/embed/track/YOUR_CREED_TRACK_ID',
+          hollow: 'https://open.spotify.com/embed/track/YOUR_HOLLOW_TRACK_ID',
+          megaverse: 'https://open.spotify.com/embed/track/YOUR_MEGAVERSE_TRACK_ID',
+          inmyhead: 'https://open.spotify.com/embed/track/YOUR_INMYHEAD_TRACK_ID',
+          walkinonwater: 'https://open.spotify.com/embed/track/YOUR_WALKINONWATER_TRACK_ID'
+        };
+
+        function openModal(song) {
+          const modal = document.getElementById('spotifyModal');
+          const modalContent = document.getElementById('modalContent');
+          modalContent.innerHTML = '<iframe src="' + spotifyLinks[song] + '" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>';
+          modal.style.display = 'block';
+        }
+
+        function closeModal() {
+          const modal = document.getElementById('spotifyModal');
+          const modalContent = document.getElementById('modalContent');
+          modalContent.innerHTML = '';
+          modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+          const modal = document.getElementById('spotifyModal');
+          if (event.target == modal) {
+            closeModal();
+          }
+        }
+      </script>
 
       <footer>
-          
+          
       </footer>
 
 
