@@ -110,6 +110,36 @@
         display: block;
       }
 
+      .sound-container {
+        width: 960px;
+        margin: 10px auto;
+        padding: 10px;
+        position: relative;
+      }
+
+      .sound-container > img:first-child {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .star-left, .star-right {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 300px;
+        height: auto;
+        z-index: 10;
+      }
+
+      .star-left {
+        left: 25px;
+      }
+
+      .star-right {
+        right: 25px;
+      }
+
       .navli-container {
         width: 960px;
         background-color: #000;
@@ -306,6 +336,13 @@
 
           </ul>
       </nav>
+
+      <!-- Sound Of Image -->
+      <div class="sound-container">
+        <img src="thesoundof.png" alt="The Sound Of">
+        <img src="124ygfeds.png" alt="Stars" class="star-left">
+        <img src="124ygfeds.png" alt="Stars" class="star-right">
+      </div>
 
       <!-- Albums Section -->
       <div class="albums-container">
